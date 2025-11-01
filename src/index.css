@@ -54,7 +54,6 @@
 
 body {
   @apply font-sans text-body leading-body;
-  background-color: #101010;
   padding: 0;
   margin: 0;
   box-sizing: border-box;

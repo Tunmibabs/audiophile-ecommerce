@@ -1,6 +1,6 @@
 import React from "react";
-import HeadPhones from "../assets/hero-headphones.svg";
-import Button from "./Button"; // Import our reusable button
+import HeadPhones from "../assets/hero-headphones.png";
+import Button from "./Button";
 
 export default function Hero() {
   return (
