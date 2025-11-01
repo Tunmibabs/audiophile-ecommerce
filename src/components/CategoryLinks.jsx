@@ -1,7 +1,8 @@
-// File: src/components/CategoryLinks.jsx
-
 import React from "react";
 import Button from "./Button";
+import Speakers from "../assets/speakers.svg";
+import Earphones from "../assets/earphones.svg";
+import Headphones from "../assets/headphones.svg";
 
 function ArrowIcon() {
   return (
@@ -26,31 +27,24 @@ const categories = [
   {
     name: "Headphones",
     href: "/headphones",
-    imgSrc: "/assets/home/image-category-headphones.png",
+    imgSrc: Headphones,
   },
   {
     name: "Speakers",
     href: "/speakers",
-    imgSrc: "/assets/home/image-category-speakers.png",
+    imgSrc: Speakers,
   },
   {
     name: "Earphones",
     href: "/earphones",
-    imgSrc: "/assets/home/image-category-earphones.png",
+    imgSrc: Earphones,
   },
 ];
 
 export default function CategoryLinks() {
   return (
-    <section className="py-20 md:py-24 lg:py-32">
+    <section className="py-20 md:py-24 lg:py-32 bg-white">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10">
-        {/*
-          --- THIS IS THE CHANGE ---
-          - Changed 'md:flex-row' to 'sm:flex-row'
-          - Changed 'md:gap-4' to 'sm:gap-4'
-          - Changed 'md:mt-0' to 'sm:mt-0'
-          - This makes the horizontal layout start at the 'sm' (376px) breakpoint.
-        */}
         <div className="flex flex-col sm:flex-row gap-16 sm:gap-4 lg:gap-8 mt-16 sm:mt-0">
           {categories.map((category) => (
             <div
@@ -61,7 +55,7 @@ export default function CategoryLinks() {
                 src={category.imgSrc}
                 alt={category.name}
                 className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2
-                           h-32 w-auto sm:h-40" // <-- Changed 'md:h-40' to 'sm:h-40'
+                           h-32 w-auto sm:h-40"
               />
 
               <h6 className="text-h6 font-bold uppercase tracking-h6 mb-4">

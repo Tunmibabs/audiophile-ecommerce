@@ -1,5 +1,5 @@
 import React from "react";
-import HeadPhones from "../assets/headphone.svg";
+import HeadPhones from "../assets/hero-headphones.svg";
 import Button from "./Button"; // Import our reusable button
 
 export default function Hero() {
