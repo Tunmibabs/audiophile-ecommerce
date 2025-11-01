@@ -1,71 +1,62 @@
 @import "tailwindcss";
 
+@theme {
+  /* 01. COLORS */
+  --color-primary: #d87d4a;
+  --color-primary-light: #fbaf85;
+  --color-black: #0E0E0E;
+  --color-black-pure: #000000;
+  --color-gray: #F1F1F1;
+  --color-off-white: #fafafa;
+  --color-white: #ffffff;
+  --color-error: #cd2c2c;
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* 02. TYPOGRAPHY (FONT FAMILY)  */
+  --font-sans: "Manrope", system-ui, sans-serif;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* 02. TYPOGRAPHY (FONT SIZES) */
+  --text-h1: 3.5rem; /* 56px */
+  --text-h2: 2.5rem; /* 40px */
+  --text-h3: 2rem; /* 32px */
+  --text-h4: 1.75rem; /* 28px */
+  --text-h5: 1.5rem; /* 24px */
+  --text-h6: 1.125rem; /* 18px */
+  --text-overline: 0.875rem; /* 14px */
+  --text-subtitle: 0.8125rem; /* 13px */
+  --text-body: 0.9375rem; /* 15px */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  /* 02. TYPOGRAPHY (LINE HEIGHTS) */
+  --leading-h1: 3.625rem; /* 58px */
+  --leading-h2: 2.75rem; /* 44px */
+  --leading-h3: 2.25rem; /* 36px */
+  --leading-h4: 2.375rem; /* 38px */
+  --leading-h5: 2.0625rem; /* 33px */
+  --leading-h6: 1.5rem; /* 24px */
+  --leading-overline: 1.1875rem; /* 19px */
+  --leading-subtitle: 1.5625rem; /* 25px */
+  --leading-body: 1.5625rem; /* 25px */
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  /* 02. TYPOGRAPHY (LETTER SPACING) */
+  --tracking-h1: 2px;
+  --tracking-h2: 1.5px;
+  --tracking-h3: 1.15px;
+  --tracking-h4: 2px;
+  --tracking-h5: 1.7px;
+  --tracking-h6: 1.3px;
+  --tracking-overline: 10px;
+  --tracking-subtitle: 1px;
+
+  /* 03. BREAKPOINTS */
+  --breakpoint-sm: 426px; /* Phone */
+  --breakpoint-md: 769px; /* Tablet */
+  --breakpoint-lg: 1440px; /* Desktop */
 }
 
 body {
+  @apply font-sans text-body leading-body;
+  background-color: #101010;
+  padding: 0;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
