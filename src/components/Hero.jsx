@@ -4,9 +4,39 @@ import Button from "./Button";
 
 export default function Hero() {
   return (
-    <section className="bg-black text-white">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 flex flex-col md:flex-row items-center">
-        <div className="md:w-1/2 text-center md:text-left py-24 md:py-36">
+    <section
+      className="bg-black text-white relative overflow-hidden
+                 min-h-[90px] md:min-h-[729px]k" 
+    >
+      <div
+        className="absolute inset-0 bg-no-repeat 
+        
+                   {/* Mobile size (< 769px) */}
+                   bg-[length:600px_auto] 
+                   bg-center
+
+                   {/* Desktop size (md: 769px+)*/}
+                   md:bg-[length:auto_729px] 
+
+                   {/* Desktop position (md: 769px+) */}
+                   md:bg-[position:calc(50%_+_220px)_center]
+
+                   {/* Gradient */}
+                   after:content-[''] after:absolute after:inset-0 after:bg-gradient-radial 
+                   after:from-black/0 after:to-black/80 after:via-black/10"
+        
+        style={{
+          backgroundImage: `url(${HeadPhones})`,
+        }}
+      ></div>
+
+      <div
+        className="max-w-[1440px] mx-auto px-6 sm:px-10 relative z-10
+                   flex flex-col md:flex-row items-center justify-center 
+                   min-h-[600px] md:min-h-[729px]"
+      >
+        {/* Text Column */}
+        <div className="md:w-1/2 text-center md:text-left py-2 md:py-10"> 
           <span className="text-overline tracking-overline text-white opacity-50 block mb-6">
             NEW PRODUCT
           </span>
@@ -22,13 +52,8 @@ export default function Hero() {
           <Button variant="primary">See Product</Button>
         </div>
 
-        <div className="md:w-1/2">
-          <img
-            src={HeadPhones}
-            alt="XX99 Mark II Headphones"
-            className="w-full"
-          />
-        </div>
+        {/* This empty div just ensures the flex layout works on desktop */}
+        <div className="md:w-1/2"></div>
       </div>
     </section>
   );

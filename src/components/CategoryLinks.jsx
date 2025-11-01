@@ -43,7 +43,7 @@ const categories = [
 
 export default function CategoryLinks() {
   return (
-    <section className="py-20 md:py-24 lg:py-32 bg-white">
+    <section className="py-20 md:py-24 lg:pt-40 lg:pb-16 bg-white">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10">
         <div className="flex flex-col sm:flex-row gap-16 sm:gap-4 lg:gap-8 mt-16 sm:mt-0">
           {categories.map((category) => (

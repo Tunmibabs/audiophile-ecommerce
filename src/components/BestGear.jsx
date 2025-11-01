@@ -1,7 +1,5 @@
-// File: src/components/BestGear.jsx
-
 import React from "react";
-import Man from "../assets/man.png"
+import Man from "../assets/man.png";
 
 export default function BestGear() {
   return (
@@ -11,22 +9,12 @@ export default function BestGear() {
                       flex flex-col md:flex-row-reverse items-center 
                       gap-12 md:gap-16 lg:gap-32"
       >
-        {/* --- 1. Image Column ---
-          This comes *first* in the HTML for mobile stacking.
-          On desktop, 'md:flex-row-reverse' will visually move it to the right.
-        */}
         <div className="flex-1 rounded-lg overflow-hidden">
           <picture>
             {/* Desktop Image (769px and up) */}
-            <source
-              media="(min-width: 769px)"
-              srcSet="/assets/home/desktop/image-best-gear.jpg"
-            />
+            <source media="(min-width: 769px)" srcSet={Man} />
             {/* Tablet Image (376px to 768px) */}
-            <source
-              media="(min-width: 376px)"
-              srcSet="/assets/home/tablet/image-best-gear.jpg"
-            />
+            <source media="(min-width: 376px)" srcSet={Man} />
             {/* Mobile Image (default, < 376px) */}
             <img
               src={Man}
@@ -36,10 +24,6 @@ export default function BestGear() {
           </picture>
         </div>
 
-        {/* --- 2. Text Column ---
-          This comes *second* in the HTML.
-          On desktop, 'md:flex-row-reverse' will visually move it to the left.
-        */}
         <div className="flex-1 text-center md:text-left">
           <h2
             className="text-h4 md:text-h2 font-bold uppercase 

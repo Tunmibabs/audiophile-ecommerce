@@ -46,7 +46,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black  pt-12 pb-10 sm:pt-14 md:pt-16 lg:pt-20 lg:pb-16">
+    <footer className="bg-black">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10">
         <div className="w-24 h-1 bg-primary mx-auto sm:mx-0"></div>
         <div
