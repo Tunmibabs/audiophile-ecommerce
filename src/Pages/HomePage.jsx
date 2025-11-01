@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import CategoryLinks from "../components/CategoryLinks";
 import FeaturedProducts from "../components/FeaturedProducts";
+import BestGear from "../components/BestGear";
 
 function HomePage() {
   return (
@@ -13,6 +14,7 @@ function HomePage() {
         <Hero />
         <CategoryLinks />
         <FeaturedProducts />
+        <BestGear />
       </main>
       <Footer />
     </div>

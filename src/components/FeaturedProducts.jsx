@@ -9,7 +9,7 @@ export default function FeaturedProducts() {
   return (
     <section className="py-20 md:py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 flex flex-col gap-8">
-        {/* --- 1. ZX9 Speaker (The big orange one) --- */}
+        {/* --- 1. ZX9 Speaker --- */}
         <div
           className="bg-primary rounded-lg p-12 pt-16 md:px-24 md:pt-24 md:pb-0 relative 
              flex flex-col md:flex-row items-center text-center md:text-left 
@@ -28,7 +28,7 @@ export default function FeaturedProducts() {
             <img
               src={Speakers}
               alt="ZX9 Speaker"
-              className="w-40 sm:w-48 md:w-[410px] {/* Sizes for mobile, tablet, and desktop */}
+              className="w-40 sm:w-48 md:w-[410px]
                  mb-8 md:mb-0 md:absolute md:bottom-0 md:transform md:translate-y-[30%] lg:translate-y-[28%]"
             />
           </div>
@@ -54,17 +54,15 @@ export default function FeaturedProducts() {
         <div className="relative rounded-lg overflow-hidden h-[320px] md:h-[400px]">
           {/* Background Image */}
           <img
-            src={ZX7}
+            src={ZX7} // Make sure this variable is imported correctly
             alt="ZX7 Speaker"
-            className="w-full h-full object-cover object-[100%_50%] md:object-center lg:object-top"
+            className="w-full h-full object-cover object-bottom-left md:object-center lg:object-right"
           />
-
           {/* Text Content */}
           <div
             className="absolute inset-0 flex flex-col justify-center
-                  p-6 sm:p-12 md:p-24 
+                  p-6 sm:p-12 md:p-24
                   items-start"
-            style={{ fontSize: "1.75rem" }}
           >
             <h3 className="text-h4 font-bold uppercase tracking-h4 mb-8">
               ZX7 Speaker
