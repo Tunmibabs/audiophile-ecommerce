@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function HamburgerIcon() {
   return (
@@ -46,20 +47,23 @@ export default function Header() {
           <HamburgerIcon />
         </button>
 
-        <a href="/" className="text-h5 font-bold flex-1 text-center md:flex-none md:text-left">
+        <Link
+          href="/"
+          className="text-h5 font-bold flex-1 text-center md:flex-none md:text-left"
+        >
           audiophile
-        </a>
+        </Link>
 
         <nav className="hidden md:flex flex-1 justify-center">
           <ul className="flex items-center gap-8">
             {navLinks.map((link) => (
               <li key={link.name} className="text-subtitle">
-                <a
+                <Link
                   href={link.href}
                   className="text-subtitle font-bold uppercase tracking-subtitle text-white hover:text-primary transition-colors"
                 >
                   {link.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -80,12 +84,12 @@ export default function Header() {
             <ul className="flex flex-col items-center gap-8">
               {navLinks.map((link) => (
                 <li key={link.name} className="text-subtitle">
-                  <a
+                  <Link
                     href={link.href}
                     className="text-subtitle font-bold uppercase tracking-subtitle text-white hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

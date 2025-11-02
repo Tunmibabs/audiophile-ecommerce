@@ -6,12 +6,10 @@ export default function Hero() {
   return (
     <section
       className="bg-black text-white relative overflow-hidden
-                 min-h-[90px] md:min-h-[729px]k" 
+                 min-h-[90px] md:min-h-[729px]" 
     >
       <div
         className="absolute inset-0 bg-no-repeat 
-        
-                   {/* Mobile size (< 769px) */}
                    bg-[length:600px_auto] 
                    bg-center
 

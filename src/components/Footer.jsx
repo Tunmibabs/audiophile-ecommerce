@@ -1,6 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-// --- Icon components (no changes) ---
 function FacebookIcon() {
   return (
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
@@ -54,12 +54,12 @@ export default function Footer() {
                         sm:items-start sm:text-left
                         md:grid md:grid-cols-2 md:gap-x-8 md:mt-16"
         >
-          <a
+          <Link
             href="/"
             className=" text-white text-h5 font-bold md:row-start-1 md:col-start-1"
           >
             audiophile
-          </a>
+          </Link>
 
           {/* Navigation */}
           <nav className="md:row-start-1 md:col-start-2 md:justify-self-end">
@@ -69,12 +69,12 @@ export default function Footer() {
             >
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-subtitle font-bold uppercase tracking-subtitle text-white hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -82,7 +82,7 @@ export default function Footer() {
 
           {/* Description */}
           <p
-          style={{fontSize: "15px"}}
+            style={{ fontSize: "15px" }}
             className="text-body leading-body text-gray opacity-50 max-w-[540px] 
                         md:row-start-2 md:col-start-1"
           >
