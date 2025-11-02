@@ -14,6 +14,7 @@ export default function FeaturedProducts() {
           className="bg-primary rounded-lg p-12 pt-16 md:px-24 md:pt-24 md:pb-0 relative 
              flex flex-col md:flex-row items-center text-center md:text-left 
              overflow-hidden"
+          style={{ paddingBottom: "96px" }}
         >
           <img
             src={PatternCircles}
@@ -29,7 +30,7 @@ export default function FeaturedProducts() {
               src={Speakers}
               alt="ZX9 Speaker"
               className="w-40 sm:w-48 md:w-[410px]
-                 mb-8 md:mb-0 md:absolute md:bottom-0 md:transform md:translate-y-[30%] lg:translate-y-[28%]"
+                 mb-8 md:mb-0 md:absolute md:bottom-0 md:transform md:translate-y-[55%] lg:translate-y-[55%]"
             />
           </div>
 
