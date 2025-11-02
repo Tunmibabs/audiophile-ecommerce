@@ -1,5 +1,6 @@
 import React from "react";
-import Man from "../assets/man.png";
+import ManPortrait from "../assets/man.png";
+import ManLandscape from "../assets/man-lanscape.svg";
 
 export default function BestGear() {
   return (
@@ -10,14 +11,12 @@ export default function BestGear() {
                       gap-12 md:gap-16 lg:gap-32"
       >
         <div className="flex-1 rounded-lg overflow-hidden">
+          
           <picture>
-            {/* Desktop Image (769px and up) */}
-            <source media="(min-width: 769px)" srcSet={Man} />
-            {/* Tablet Image (376px to 768px) */}
-            <source media="(min-width: 376px)" srcSet={Man} />
-            {/* Mobile Image (default, < 376px) */}
+            <source media="(min-width: 769px)" srcSet={ManPortrait} />
+            <source media="(min-width: 376px)" srcSet={ManLandscape} />
             <img
-              src={Man}
+              src={ManPortrait}
               alt="Man wearing audiophile headphones"
               className="w-full h-full object-cover"
             />
@@ -27,8 +26,8 @@ export default function BestGear() {
         <div className="flex-1 text-center md:text-left">
           <h2
             className="text-h4 md:text-h2 font-bold uppercase 
-                         tracking-h4 md:tracking-h2 
-                         leading-h4 md:leading-h2 mb-8"
+                                tracking-h4 md:tracking-h2 
+                                leading-h4 md:leading-h2 mb-8"
           >
             Bringing you the
             <br />

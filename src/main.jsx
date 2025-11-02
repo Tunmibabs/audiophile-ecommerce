@@ -4,6 +4,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import HomePage from "./Pages/HomePage.jsx";
+import CategoryPage from "./Pages/CategoryPage.jsx";
 import { ConvexReactClient } from "convex/react";
 import { ConvexProvider } from "convex/react";
 
@@ -18,10 +19,10 @@ const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
-      // {
-      //   path: '/headphones',
-      //   element: <CategoryPage />,
-      // },
+      {
+        path: '/:categoryName',
+        element: <CategoryPage />,
+      },
       // {
       //   path: '/speakers',
       //   element: <CategoryPage />,
