@@ -70,28 +70,49 @@ const categoryData = {
         ],
         gallery: {
           first: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: xx991,
             mobile: xx991,
             tablet: xx991,
           },
           second: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: xx992,
             mobile: xx992,
             tablet: xx992,
           },
           third: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: xx993,
             mobile: xx993,
             tablet: xx993,
           },
         },
         others: [
-          { slug: "xx99-mark-i-headphones", name: "XX99 Mark I" /*, image */ },
-          { slug: "xx59-headphones", name: "XX59" /*, image */ },
-          { slug: "zx9-speaker", name: "ZX9 Speaker" /*, image */ },
+          {
+            slug: "xx99-mark-i-headphones",
+            name: "XX99 Mark I",
+            images: {
+              mobile: XX99MarkIm,
+              tablet: XX99MarkIm,
+              desktop: XX99MarkI,
+            },
+          },
+          {
+            slug: "xx59-headphones",
+            name: "XX59",
+            images: {
+              mobile: XX59m,
+              tablet: XX59m,
+              desktop: XX59,
+            },
+          },
+          {
+            slug: "zx9-speaker",
+            name: "ZX9 Speaker",
+            images: {
+              mobile: ZX9Speaker,
+              tablet: ZX9Speaker,
+              desktop: ZX9Speaker,
+            },
+          },
         ],
       },
       {
@@ -118,28 +139,49 @@ const categoryData = {
         ],
         gallery: {
           first: {
-            /* TODO: Add mobile/tablet/desktop images */
             mobile: mark11,
             tablet: mark11,
             desktop: mark11,
           },
           second: {
-            /* TODO: Add mobile/tablet/desktop images */
             mobile: mark12,
             tablet: mark12,
             desktop: mark12,
           },
           third: {
-            /* TODO: Add mobile/tablet/desktop images */
             mobile: mark13,
             tablet: mark13,
             desktop: mark13,
           },
         },
         others: [
-          { slug: "xx99-mark-i-headphones", name: "XX99 Mark I" /*, image */ },
-          { slug: "xx59-headphones", name: "XX59" /*, image */ },
-          { slug: "zx9-speaker", name: "ZX9 Speaker" /*, image */ },
+          {
+            slug: "xx99-mark-ii-headphones",
+            name: "XX99 Mark II",
+            images: {
+              mobile: XX99HeadphonesM,
+              tablet: XX99HeadphonesM,
+              desktop: XX99Headphones,
+            },
+          },
+          {
+            slug: "xx59-headphones",
+            name: "XX59",
+            images: {
+              mobile: XX59m,
+              tablet: XX59m,
+              desktop: XX59,
+            },
+          },
+          {
+            slug: "zx9-speaker",
+            name: "ZX9 Speaker",
+            images: {
+              mobile: ZX9Speaker,
+              tablet: ZX9Speaker,
+              desktop: ZX9Speaker,
+            },
+          },
         ],
       },
       {
@@ -166,29 +208,49 @@ More than a simple pair of headphones, this headset features a pair of built-in 
         ],
         gallery: {
           first: {
-            /* TODO: Add mobile/tablet/desktop images */
-
             desktop: xx591,
             mobile: xx591,
             tablet: xx591,
           },
           second: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: xx592,
             mobile: xx592,
             tablet: xx592,
           },
           third: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: xx593,
             mobile: xx593,
             tablet: xx593,
           },
         },
         others: [
-          { slug: "xx99-mark-i-headphones", name: "XX99 Mark I" /*, image */ },
-          { slug: "xx59-headphones", name: "XX59" /*, image */ },
-          { slug: "zx9-speaker", name: "ZX9 Speaker" /*, image */ },
+          {
+            slug: "xx99-mark-ii-headphones",
+            name: "XX99 Mark II",
+            images: {
+              mobile: XX99HeadphonesM,
+              tablet: XX99HeadphonesM,
+              desktop: XX99Headphones,
+            },
+          },
+          {
+            slug: "xx99-mark-i-headphones",
+            name: "XX99 Mark I",
+            images: {
+              mobile: XX99MarkIm,
+              tablet: XX99MarkIm,
+              desktop: XX99MarkI,
+            },
+          },
+          {
+            slug: "zx9-speaker",
+            name: "ZX9 Speaker",
+            images: {
+              mobile: ZX9Speaker,
+              tablet: ZX9Speaker,
+              desktop: ZX9Speaker,
+            },
+          },
         ],
       },
     ],
@@ -204,8 +266,8 @@ More than a simple pair of headphones, this headset features a pair of built-in 
         isNew: true,
         slug: "zx9-speaker",
         images: {
-          mobile: ZX9Speaker, // <-- TODO: Replace
-          tablet: ZX9Speaker, // <-- TODO: Replace
+          mobile: ZX9Speaker,
+          tablet: ZX9Speaker,
           desktop: ZX9Speaker,
         },
         price: 4500,
@@ -221,28 +283,49 @@ Discover clear, more natural sounding highs than the competition with ZX9’s si
         ],
         gallery: {
           first: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: zx91,
             mobile: zx91,
             tablet: zx91,
           },
           second: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: zx92,
             mobile: zx92,
             tablet: zx92,
           },
           third: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: zx93,
             mobile: zx93,
             tablet: zx93,
           },
         },
         others: [
-          { slug: "xx99-mark-i-headphones", name: "XX99 Mark I" /*, image */ },
-          { slug: "xx59-headphones", name: "XX59" /*, image */ },
-          { slug: "zx9-speaker", name: "ZX9 Speaker" /*, image */ },
+          {
+            slug: "zx7-speaker",
+            name: "ZX7 Speaker",
+            images: {
+              mobile: ZX7Speaker,
+              tablet: ZX7Speaker,
+              desktop: ZX7Speaker,
+            },
+          },
+          {
+            slug: "xx99-mark-i-headphones",
+            name: "XX99 Mark I",
+            images: {
+              mobile: XX99MarkIm,
+              tablet: XX99MarkIm,
+              desktop: XX99MarkI,
+            },
+          },
+          {
+            slug: "xx59-headphones",
+            name: "XX59",
+            images: {
+              mobile: XX59m,
+              tablet: XX59m,
+              desktop: XX59,
+            },
+          },
         ],
       },
 
@@ -254,8 +337,8 @@ Discover clear, more natural sounding highs than the competition with ZX9’s si
         isNew: false,
         slug: "zx7-speaker",
         images: {
-          mobile: ZX7Speaker, // <-- TODO: Replace
-          tablet: ZX7Speaker, // <-- TODO: Replace
+          mobile: ZX7Speaker,
+          tablet: ZX7Speaker,
           desktop: ZX7Speaker,
         },
         price: 3500,
@@ -271,28 +354,49 @@ The ZX7 speaker is the perfect blend of stylish design and high performance. It 
         ],
         gallery: {
           first: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: ZX71,
             mobile: ZX71,
             tablet: ZX71,
           },
           second: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: ZX72,
             mobile: ZX72,
             tablet: ZX72,
           },
           third: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: ZX73,
             mobile: ZX73,
             tablet: ZX73,
           },
         },
         others: [
-          { slug: "xx99-mark-i-headphones", name: "XX99 Mark I" /*, image */ },
-          { slug: "xx59-headphones", name: "XX59" /*, image */ },
-          { slug: "zx9-speaker", name: "ZX9 Speaker" /*, image */ },
+          {
+            slug: "xx99-mark-i-headphones",
+            name: "XX99 Mark I",
+            images: {
+              mobile: XX59m,
+              tablet: XX59m,
+              desktop: XX59,
+            },
+          },
+          {
+            slug: "zx9-speaker",
+            name: "ZX9 Speaker",
+            images: {
+              mobile: XX59m,
+              tablet: XX59m,
+              desktop: XX59,
+            },
+          },
+          {
+            slug: "xx59-headphones",
+            name: "XX59",
+            images: {
+              mobile: XX59m,
+              tablet: XX59m,
+              desktop: XX59,
+            },
+          },
         ],
       },
     ],
@@ -325,28 +429,37 @@ The YX1 Wireless Earphones features customizable controls for volume, music, cal
         ],
         gallery: {
           first: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: E1,
             mobile: E1,
             tablet: E1,
           },
           second: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: E2,
             mobile: E2,
             tablet: E2,
           },
           third: {
-            /* TODO: Add mobile/tablet/desktop images */
             desktop: E3,
             mobile: E3,
             tablet: E3,
           },
         },
         others: [
-          { slug: "xx99-mark-i-headphones", name: "XX99 Mark I" /*, image */ },
-          { slug: "xx59-headphones", name: "XX59" /*, image */ },
-          { slug: "zx9-speaker", name: "ZX9 Speaker" /*, image */ },
+          { slug: "xx99-mark-i-headphones", name: "XX99 Mark I", images: {
+              mobile: XX59m,
+              tablet: XX59m,
+              desktop: XX59,
+            } },
+          { slug: "xx59-headphones", name: "XX59", images: {
+              mobile: XX59m,
+              tablet: XX59m,
+              desktop: XX59,
+            }},
+          { slug: "zx9-speaker", name: "ZX9 Speaker", images: {
+              mobile: XX59m,
+              tablet: XX59m,
+              desktop: XX59,
+            } },
         ],
       },
     ],

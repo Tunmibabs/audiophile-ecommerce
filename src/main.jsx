@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import HomePage from "./Pages/HomePage.jsx";
 import CategoryPage from "./Pages/CategoryPage.jsx";
-import ProductDetailPage from "./Pages/PropertyDetailsPage.jsx";
+import ProductDetailPage from "./Pages/ProductDetailPage.jsx";
 import { ConvexReactClient } from "convex/react";
 import { ConvexProvider } from "convex/react";
 
@@ -13,7 +13,7 @@ const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL);
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
       {
@@ -21,11 +21,11 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: '/:categoryName',
+        path: "/:categoryName",
         element: <CategoryPage />,
       },
       {
-        path: '/product/:productSlug',
+        path: "/product/:productSlug",
         element: <ProductDetailPage />,
       },
     ],

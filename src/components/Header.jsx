@@ -62,7 +62,7 @@ export default function Header() {
         </button>
 
         <Link
-          href="/"
+          to="/"
           className="text-h5 font-bold flex-1 text-center md:flex-none md:text-left"
         >
           audiophile
@@ -73,7 +73,7 @@ export default function Header() {
             {navLinks.map((link) => (
               <li key={link.name} className="text-subtitle">
                 <Link
-                  href={link.href}
+                  to={link.href}
                   className="text-subtitle font-bold uppercase tracking-subtitle text-white hover:text-primary transition-colors"
                 >
                   {link.name}
@@ -99,7 +99,7 @@ export default function Header() {
               {navLinks.map((link) => (
                 <li key={link.name} className="text-subtitle">
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="text-subtitle font-bold uppercase tracking-subtitle text-white hover:text-primary transition-colors"
                   >
                     {link.name}

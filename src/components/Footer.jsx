@@ -55,7 +55,7 @@ export default function Footer() {
                         md:grid md:grid-cols-2 md:gap-x-8 md:mt-16"
         >
           <Link
-            href="/"
+            to="/"
             className=" text-white text-h5 font-bold md:row-start-1 md:col-start-1"
           >
             audiophile
@@ -70,7 +70,7 @@ export default function Footer() {
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="text-subtitle font-bold uppercase tracking-subtitle text-white hover:text-primary transition-colors"
                   >
                     {link.name}
@@ -83,7 +83,7 @@ export default function Footer() {
           {/* Description */}
           <p
             style={{ fontSize: "15px" }}
-            className="text-body leading-body text-gray opacity-50 max-w-[540px] 
+            className="text-body leading-body text-white opacity-50 max-w-[540px] 
                         md:row-start-2 md:col-start-1"
           >
             Audiophile is an all in one stop to fulfill your audio needs. We're
@@ -99,7 +99,7 @@ export default function Footer() {
           >
             {/* Copyright */}
             <p
-              className="text-body leading-body text-gray opacity-50
+              className="text-body leading-body text-white opacity-50
                             md:row-start-3 md:col-start-1"
             >
               Copyright 2021. All Rights Reserved

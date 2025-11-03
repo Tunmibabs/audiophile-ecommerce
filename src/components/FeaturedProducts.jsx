@@ -13,8 +13,7 @@ export default function FeaturedProducts() {
         <div
           className="bg-primary rounded-lg p-12 pt-16 md:px-24 md:pt-24 md:pb-0 relative 
              flex flex-col md:flex-row items-center text-center md:text-left 
-             overflow-hidden"
-          style={{ paddingBottom: "96px" }}
+             overflow-hidden pb-24"
         >
           <img
             src={PatternCircles}
@@ -85,8 +84,7 @@ export default function FeaturedProducts() {
           {/* Text Card Column */}
           <div className="bg-gray rounded-lg flex flex-col justify-center p-12 md:p-24 items-start">
             <h3
-              className=" font-bold uppercase tracking-h4 mb-8"
-              style={{ fontSize: "1.75rem" }}
+              className=" font-bold uppercase tracking-h4 mb-8 text-h4"
             >
               YX1 Earphones
             </h3>

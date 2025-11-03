@@ -1,15 +1,15 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-import { allProductData } from './CategoryPage.jsx'; 
+import { allProductData } from "./CategoryPage.jsx";
 
-import CategoryLinks from '../components/CategoryLinks';
-import BestGear from '../components/BestGear';
+import CategoryLinks from "../components/CategoryLinks.jsx";
+import BestGear from "../components/BestGear.jsx";
 
-import ProductDetailCard from '../components/ProductDetailCard';
-import ProductInfo from '../components/ProductsInfo.jsx';
-import ProductGallery from '../components/ProductGallery.jsx';
-import YouMayAlsoLike from '../components/YouMayAlsoLike.jsx';
+import ProductDetailCard from "../components/ProductDetailCard.jsx";
+import ProductInfo from "../components/ProductsInfo.jsx";
+import ProductGallery from "../components/ProductGallery.jsx";
+import YouMayAlsoLike from "../components/YouMayAlsoLike.jsx";
 
 export default function ProductDetailPage() {
   const { productSlug } = useParams(); // Gets 'xx99-mark-ii-headphones' from URL
@@ -24,7 +24,7 @@ export default function ProductDetailPage() {
   ];
 
   // Now, find the product that matches the slug
-  const product = allProducts.find(p => p.slug === productSlug);
+  const product = allProducts.find((p) => p.slug === productSlug);
 
   // 5. Handle "Go Back"
   const handleGoBack = () => {
@@ -38,7 +38,7 @@ export default function ProductDetailPage() {
   return (
     <>
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 pt-8 md:pt-16 lg:pt-20">
-        <button 
+        <button
           onClick={handleGoBack}
           className="text-body text-black text-opacity-75 hover:text-primary mb-8"
         >
@@ -48,7 +48,6 @@ export default function ProductDetailPage() {
         <ProductInfo product={product} />
         <ProductGallery product={product} />
         <YouMayAlsoLike product={product} />
-
       </div>
       <CategoryLinks />
       <BestGear />

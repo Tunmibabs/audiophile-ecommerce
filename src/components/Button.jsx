@@ -25,12 +25,12 @@ export default function Button({
   };
   const Tag = as === "link" ? Link : "button";
   return (
-    <button
+    <Tag
       className={cn(baseStyles, variantStyles[variant], className)}
       to={to}
       {...props}
     >
       {children}
-    </button>
+    </Tag>
   );
 }
