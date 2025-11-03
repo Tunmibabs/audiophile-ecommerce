@@ -1,0 +1,57 @@
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+
+import { allProductData } from './CategoryPage.jsx'; 
+
+import CategoryLinks from '../components/CategoryLinks';
+import BestGear from '../components/BestGear';
+
+import ProductDetailCard from '../components/ProductDetailCard';
+import ProductInfo from '../components/ProductsInfo.jsx';
+import ProductGallery from '../components/ProductGallery.jsx';
+import YouMayAlsoLike from '../components/YouMayAlsoLike.jsx';
+
+export default function ProductDetailPage() {
+  const { productSlug } = useParams(); // Gets 'xx99-mark-ii-headphones' from URL
+  const navigate = useNavigate();
+
+  // 4. Find the correct product
+  // First, create one flat array of all products
+  const allProducts = [
+    ...allProductData.headphones.products,
+    ...allProductData.speakers.products,
+    ...allProductData.earphones.products,
+  ];
+
+  // Now, find the product that matches the slug
+  const product = allProducts.find(p => p.slug === productSlug);
+
+  // 5. Handle "Go Back"
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+  if (!product) {
+    return <div>Product not found</div>; // Or a 404 component
+  }
+
+  return (
+    <>
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 pt-8 md:pt-16 lg:pt-20">
+        <button 
+          onClick={handleGoBack}
+          className="text-body text-black text-opacity-75 hover:text-primary mb-8"
+        >
+          Go Back
+        </button>
+        <ProductDetailCard product={product} />
+        <ProductInfo product={product} />
+        <ProductGallery product={product} />
+        <YouMayAlsoLike product={product} />
+
+      </div>
+      <CategoryLinks />
+      <BestGear />
+    </>
+  );
+}

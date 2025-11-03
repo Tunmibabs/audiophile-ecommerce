@@ -1,0 +1,80 @@
+import React, { useState } from 'react';
+import Button from './Button';
+import QuantitySelector from './QuantitySelector';
+
+export default function ProductDetailCard({ product }) {
+  const { name, description, isNew, images, price } = product;
+  const [quantity, setQuantity] = useState(1);
+
+  const handleDecrement = () => {
+    setQuantity(prev => (prev > 1 ? prev - 1 : 1)); // Can't go below 1
+  };
+  const handleIncrement = () => {
+    setQuantity(prev => prev + 1);
+  };
+  const handleAddToCart = () => {
+    console.log(`Adding ${quantity} of ${name} to cart.`);
+  };
+
+  const formattedPrice = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0, 
+  }).format(price);
+
+  // --- Split Name (like we did in ProductCard) ---
+  const nameArray = name.split(' ');
+  const lastWord = nameArray.pop();
+  const restOfName = nameArray.join(' ');
+
+  return (
+    <article className="flex flex-col sm:flex-row items-center 
+                        gap-12 sm:gap-16 md:gap-32 mt-8 md:mt-12">
+      
+      {/* --- Image Column --- */}
+      <div className="flex-1 rounded-lg overflow-hidden bg-gray">
+        <picture>
+          <source media="(min-width: 769px)" srcSet={images.desktop} />
+          <source media="(min-width: 376px)" srcSet={images.tablet} />
+          <img src={images.mobile} alt={name} className="w-full" />
+        </picture>
+      </div>
+
+      {/* --- Text Column --- */}
+      <div className="flex-1">
+        {isNew && (
+          <span className="text-overline text-primary tracking-overline block mb-4">
+            NEW PRODUCT
+          </span>
+        )}
+        
+        <h2 className="text-h2 md:text-h1 font-bold uppercase 
+                       tracking-h2 md:tracking-h1 
+                       leading-h2 md:leading-h1 mb-8">
+          {restOfName} <br /> {lastWord}
+        </h2>
+        
+        <p className="text-body leading-body text-black text-opacity-75 mb-8">
+          {description}
+        </p>
+
+        <div className="text-h6 font-bold uppercase tracking-h6 mb-8">
+          {formattedPrice}
+        </div>
+
+        {/* --- Add to Cart Section --- */}
+        <div className="flex gap-4">
+          <QuantitySelector 
+            quantity={quantity}
+            onDecrement={handleDecrement}
+            onIncrement={handleIncrement}
+          />
+          <Button variant="primary" onClick={handleAddToCart}>
+            Add to Cart
+          </Button>
+        </div>
+      </div>
+    </article>
+  );
+}

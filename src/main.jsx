@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import HomePage from "./Pages/HomePage.jsx";
 import CategoryPage from "./Pages/CategoryPage.jsx";
+import ProductDetailPage from "./Pages/PropertyDetailsPage.jsx";
 import { ConvexReactClient } from "convex/react";
 import { ConvexProvider } from "convex/react";
 
@@ -23,14 +24,10 @@ const router = createBrowserRouter([
         path: '/:categoryName',
         element: <CategoryPage />,
       },
-      // {
-      //   path: '/speakers',
-      //   element: <CategoryPage />,
-      // },
-      // {
-      //   path: '/earphones',
-      //   element: <CategoryPage />,
-      // },
+      {
+        path: '/product/:productSlug',
+        element: <ProductDetailPage />,
+      },
     ],
   },
 ]);
