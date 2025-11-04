@@ -4,12 +4,10 @@ import { useCart } from "../context/CartContext";
 import TextInput from "../components/TextInput";
 import RadioInput from "../components/RadioInput";
 import Summary from "../components/Summary";
-// We will create this modal in the next step
-// import ThankYouModal from '../components/ThankYouModal';
+import ThankYouModal from '../components/ThankYouModal';
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
-  const { clearCart } = useCart();
   const [showThankYou, setShowThankYou] = useState(false);
 
   // --- Form State ---
@@ -63,10 +61,13 @@ export default function CheckoutPage() {
     if (validateForm()) {
       console.log("Form Submitted", formData);
       setShowThankYou(true); // Show the confirmation modal
-      clearCart(); // Clear the cart
     } else {
       console.log("Form validation failed", errors);
     }
+  };
+
+  const closeThankYouModal = () => {
+    setShowThankYou(false);
   };
 
   return (
@@ -86,7 +87,7 @@ export default function CheckoutPage() {
         */}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col md:flex-row gap-8 items-start"
+          className="flex flex-col md:flex-row gap-8 items-start relative"
         >
           {/* --- 1. Checkout Form Card --- */}
           <div className="flex-1 bg-white rounded-lg p-6 sm:p-8">
@@ -230,12 +231,11 @@ export default function CheckoutPage() {
 
           {/* --- 2. Summary Card --- */}
           <div className="w-full md:w-1/3">
-            {/* We pass the 'handleSubmit' as the 'onContinue' prop */}
             <Summary onContinue={handleSubmit} />
           </div>
         </form>
 
-        {/* {showThankYou && <ThankYouModal />} */}
+        {showThankYou && <ThankYouModal />}
       </div>
     </div>
   );
