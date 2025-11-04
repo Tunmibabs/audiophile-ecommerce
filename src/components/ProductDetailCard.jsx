@@ -1,37 +1,39 @@
-import React, { useState } from 'react';
-import Button from './Button';
-import QuantitySelector from './QuantitySelector';
+import React, { useState } from "react";
+import Button from "./Button";
+import QuantitySelector from "./QuantitySelector";
+import { useCart } from "../context/CartContext";
 
 export default function ProductDetailCard({ product }) {
   const { name, description, isNew, images, price } = product;
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   const handleDecrement = () => {
-    setQuantity(prev => (prev > 1 ? prev - 1 : 1)); // Can't go below 1
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   };
   const handleIncrement = () => {
-    setQuantity(prev => prev + 1);
+    setQuantity((prev) => prev + 1);
   };
   const handleAddToCart = () => {
-    console.log(`Adding ${quantity} of ${name} to cart.`);
+    addToCart(product, quantity);
   };
 
-  const formattedPrice = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const formattedPrice = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 0,
-    maximumFractionDigits: 0, 
+    maximumFractionDigits: 0,
   }).format(price);
 
-  // --- Split Name (like we did in ProductCard) ---
-  const nameArray = name.split(' ');
+  const nameArray = name.split(" ");
   const lastWord = nameArray.pop();
-  const restOfName = nameArray.join(' ');
+  const restOfName = nameArray.join(" ");
 
   return (
-    <article className="flex flex-col sm:flex-row items-center 
-                        gap-12 sm:gap-16 md:gap-32 mt-8 md:mt-12">
-      
+    <article
+      className="flex flex-col sm:flex-row items-center 
+                        gap-12 sm:gap-16 md:gap-32 mt-8 md:mt-12"
+    >
       {/* --- Image Column --- */}
       <div className="flex-1 rounded-lg overflow-hidden bg-gray">
         <picture>
@@ -48,13 +50,15 @@ export default function ProductDetailCard({ product }) {
             NEW PRODUCT
           </span>
         )}
-        
-        <h2 className="text-h2 md:text-h1 font-bold uppercase 
+
+        <h2
+          className="text-h2 md:text-h1 font-bold uppercase 
                        tracking-h2 md:tracking-h1 
-                       leading-h2 md:leading-h1 mb-8">
+                       leading-h2 md:leading-h1 mb-8"
+        >
           {restOfName} <br /> {lastWord}
         </h2>
-        
+
         <p className="text-body leading-body text-black text-opacity-75 mb-8">
           {description}
         </p>
@@ -65,7 +69,7 @@ export default function ProductDetailCard({ product }) {
 
         {/* --- Add to Cart Section --- */}
         <div className="flex gap-4">
-          <QuantitySelector 
+          <QuantitySelector
             quantity={quantity}
             onDecrement={handleDecrement}
             onIncrement={handleIncrement}

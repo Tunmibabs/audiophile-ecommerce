@@ -12,21 +12,17 @@ import ProductGallery from "../components/ProductGallery.jsx";
 import YouMayAlsoLike from "../components/YouMayAlsoLike.jsx";
 
 export default function ProductDetailPage() {
-  const { productSlug } = useParams(); // Gets 'xx99-mark-ii-headphones' from URL
+  const { productSlug } = useParams();
   const navigate = useNavigate();
 
-  // 4. Find the correct product
-  // First, create one flat array of all products
   const allProducts = [
     ...allProductData.headphones.products,
     ...allProductData.speakers.products,
     ...allProductData.earphones.products,
   ];
 
-  // Now, find the product that matches the slug
   const product = allProducts.find((p) => p.slug === productSlug);
 
-  // 5. Handle "Go Back"
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -38,12 +34,14 @@ export default function ProductDetailPage() {
   return (
     <>
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 pt-8 md:pt-16 lg:pt-20">
-        <button
-          onClick={handleGoBack}
-          className="text-body text-black text-opacity-75 hover:text-primary mb-8"
-        >
-          Go Back
-        </button>
+        <div className="w-full flex">
+          <button
+            onClick={handleGoBack}
+            className="text-body text-black text-opacity-75 hover:text-primary mb-8"
+          >
+            Go Back
+          </button>
+        </div>
         <ProductDetailCard product={product} />
         <ProductInfo product={product} />
         <ProductGallery product={product} />

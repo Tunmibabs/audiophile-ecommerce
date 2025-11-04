@@ -6,8 +6,10 @@ import App from "./App.jsx";
 import HomePage from "./Pages/HomePage.jsx";
 import CategoryPage from "./Pages/CategoryPage.jsx";
 import ProductDetailPage from "./Pages/ProductDetailPage.jsx";
+import CheckoutPage from "./Pages/CheckOutPage.jsx";
 import { ConvexReactClient } from "convex/react";
 import { ConvexProvider } from "convex/react";
+import { CartProvider } from "./context/CartContext.jsx";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL);
 
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
         path: "/product/:productSlug",
         element: <ProductDetailPage />,
       },
+      {
+        path: "/checkout",
+        element: <CheckoutPage />
+      }
     ],
   },
 ]);
@@ -35,7 +41,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ConvexProvider client={convex}>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </ConvexProvider>
   </StrictMode>
 );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 function HamburgerIcon() {
   return (
@@ -27,6 +28,7 @@ function CartIcon() {
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { toggleCart, cartCount } = useCart();
 
   useEffect(() => {
     const handleResize = () => {
@@ -87,8 +89,18 @@ export default function Header() {
           type="button"
           className=" text-white hover:text-primary transition-colors"
           aria-label="View shopping cart"
+          onClick={toggleCart}
         >
           <CartIcon />
+          {cartCount > 0 && (
+            <span
+              className="absolute -top-2 -right-3 bg-primary text-white 
+                             text-xs font-bold rounded-full w-5 h-5 
+                             flex items-center justify-center"
+            >
+              {cartCount}
+            </span>
+          )}
         </button>
       </div>
 

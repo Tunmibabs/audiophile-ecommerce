@@ -1,3 +1,5 @@
+// File: src/components/YouMayAlsoLike.jsx
+
 import React from 'react';
 import Button from './Button';
 
@@ -9,20 +11,27 @@ export default function YouMayAlsoLike({ product }) {
       <h3 className="text-h3 font-bold uppercase tracking-h3 mb-10 md:mb-16">
         You May Also Like
       </h3>
-      <div className="flex flex-col md:flex-row gap-14 md:gap-4 lg:gap-8">
+      <div className="flex flex-col sm:flex-row gap-14 sm:gap-4 lg:gap-8">
         {others.map((otherProduct) => (
-          <div key={otherProduct.slug} className="flex-1">
-            <div className="rounded-lg overflow-hidden bg-gray mb-8">
+          <div key={otherProduct.slug} className="flex-1 flex flex-col items-center">
+            <div className="rounded-lg overflow-hidden bg-gray mb-8 
+                            flex justify-center items-center py-8">
               <picture>
                 <source media="(min-width: 769px)" srcSet={otherProduct.images.desktop} />
                 <source media="(min-width: 376px)" srcSet={otherProduct.images.tablet} />
-                <img src={otherProduct.images.mobile} alt={otherProduct.name} className="w-full" />
+                <img 
+                  src={otherProduct.images.mobile} 
+                  alt={otherProduct.name} 
+                  className="w-1/2 object-contain mx-auto"
+                />
               </picture>
             </div>
+            
             <h4 className="text-h4 font-bold uppercase tracking-h4 mb-8">
               {otherProduct.name}
             </h4>
-            <Button as="link" to={`/product/${otherProduct.slug}`} variant="primary">
+            
+            <Button as="link" to={`/product/${otherProduct.slug}`} variant="primary" className="mt-auto">
               See Product
             </Button>
           </div>
