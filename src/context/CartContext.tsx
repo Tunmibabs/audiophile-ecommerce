@@ -1,14 +1,50 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-const CartContext = createContext();
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  slug: string;
+  images: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
+}
+
+interface CartItem extends Product {
+  quantity: number;
+}
+
+interface CartContextType {
+  cartItems: CartItem[];
+  isCartOpen: boolean;
+  cartCount: number;
+  totalPrice: number;
+  addToCart: (product: Product, quantity: number) => void;
+  updateQuantity: (productId: number, amount: number) => void;
+  clearCart: () => void;
+  toggleCart: () => void;
+  closeCart: () => void;
+}
+
+const CartContext = createContext<CartContextType | null>(null);
 
 export const useCart = () => {
-  return useContext(CartContext);
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
+  return context;
 };
 
-export function CartProvider({ children }) {
+interface CartProviderProps {
+  children: ReactNode;
+}
+
+export function CartProvider({ children }: CartProviderProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const toggleCart = () => {
     setIsCartOpen(prev => !prev);
@@ -18,7 +54,7 @@ export function CartProvider({ children }) {
     setIsCartOpen(false);
   };
 
-  const addToCart = (product, quantity) => {
+  const addToCart = (product: Product, quantity: number) => {
     setCartItems(prevItems => {
       const existingItem = prevItems.find(item => item.id === product.id);
 
@@ -35,7 +71,7 @@ export function CartProvider({ children }) {
     setIsCartOpen(true); 
   };
 
-  const updateQuantity = (productId, amount) => {
+  const updateQuantity = (productId: number, amount: number) => {
     setCartItems(prevItems => {
       return prevItems.map(item => {
         if (item.id === productId) {
@@ -57,7 +93,7 @@ export function CartProvider({ children }) {
     return total + (item.price * item.quantity);
   }, 0);
 
-  const value = {
+  const value: CartContextType = {
     cartItems,
     isCartOpen,
     cartCount,

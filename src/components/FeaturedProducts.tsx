@@ -5,7 +5,7 @@ import Speakers from "../assets/zx9-speaker.svg";
 import ZX7 from "../assets/zx7.png";
 import YX1 from "../assets/YX1.svg";
 
-export default function FeaturedProducts() {
+export default function FeaturedProducts(): React.ReactElement {
   return (
     <section className="py-20 md:py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 flex flex-col gap-8">
@@ -46,7 +46,10 @@ export default function FeaturedProducts() {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <Button variant="tertiary">See Product</Button>
+            {/* Updated to be a link */}
+            <Button as="link" to="/product/zx9-speaker" variant="tertiary">
+              See Product
+            </Button>
           </div>
         </div>
 
@@ -54,7 +57,7 @@ export default function FeaturedProducts() {
         <div className="relative rounded-lg overflow-hidden h-[320px] md:h-[400px]">
           {/* Background Image */}
           <img
-            src={ZX7} 
+            src={ZX7}
             alt="ZX7 Speaker"
             className="w-full h-full object-cover object-bottom-left md:object-center lg:object-right"
           />
@@ -67,7 +70,10 @@ export default function FeaturedProducts() {
             <h3 className="text-h4 font-bold uppercase tracking-h4 mb-8">
               ZX7 Speaker
             </h3>
-            <Button variant="secondary">See Product</Button>
+            {/* Updated to be a link */}
+            <Button as="link" to="/product/zx7-speaker" variant="secondary">
+              See Product
+            </Button>
           </div>
         </div>
 
@@ -83,12 +89,17 @@ export default function FeaturedProducts() {
           </div>
           {/* Text Card Column */}
           <div className="bg-gray rounded-lg flex flex-col justify-center p-12 md:p-24 items-start">
-            <h3
-              className=" font-bold uppercase tracking-h4 mb-8 text-h4"
-            >
+            <h3 className=" font-bold uppercase tracking-h4 mb-8 text-h4">
               YX1 Earphones
             </h3>
-            <Button variant="secondary">See Product</Button>
+            {/* Updated to be a link */}
+            <Button
+              as="link"
+              to="/product/yx1-wireless-earphones"
+              variant="secondary"
+            >
+              See Product
+            </Button>
           </div>
         </div>
       </div>

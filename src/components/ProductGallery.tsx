@@ -1,6 +1,25 @@
 import React from 'react';
 
-export default function ProductGallery({ product }) {
+interface GalleryImage {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
+interface Product {
+  name: string;
+  gallery: {
+    first: GalleryImage;
+    second: GalleryImage;
+    third: GalleryImage;
+  };
+}
+
+interface ProductGalleryProps {
+  product: Product;
+}
+
+export default function ProductGallery({ product }: ProductGalleryProps) {
   const { gallery } = product;
 
   return (

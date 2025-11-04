@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
+import { useCart, CartItem as CartItemType } from '../context/CartContext';
 import Button from './Button';
 
-function CheckIcon() {
+function CheckIcon(): React.ReactElement {
   return (
     <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
       <g fill="none" fillRule="evenodd">
@@ -18,8 +18,11 @@ function CheckIcon() {
   );
 }
 
-// A small component for the summary item
-function ThankYouItem({ item }) {
+interface ThankYouItemProps {
+  item: CartItemType;
+}
+
+function ThankYouItem({ item }: ThankYouItemProps) {
   const formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -39,7 +42,11 @@ function ThankYouItem({ item }) {
   );
 }
 
-export default function ThankYouModal({ onClose }) {
+interface ThankYouModalProps {
+  onClose: () => void;
+}
+
+export default function ThankYouModal({ onClose }: ThankYouModalProps) {
   const { cartItems, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
 
@@ -55,7 +62,6 @@ export default function ThankYouModal({ onClose }) {
     maximumFractionDigits: 0,
   }).format(grandTotal);
 
-  // --- Get Items for Summary ---
   const firstItem = cartItems[0];
   const otherItemCount = cartItems.length - 1;
 
@@ -107,6 +113,7 @@ export default function ThankYouModal({ onClose }) {
             </span>
           </div>
         </div>
+        {/* This assumes Button.tsx is typed for an onClick prop */}
         <Button variant="primary" onClick={handleBackToHome} className="w-full">
           Back to Home
         </Button>

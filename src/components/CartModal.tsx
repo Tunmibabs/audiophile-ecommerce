@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
+import { useCart, CartItem as CartItemType } from "../context/CartContext.tsx";
 import Button from "./Button";
-import QuantitySelector from "./QuantitySelector";
+import QuantitySelector from "./QuantitySelector.tsx";
 
-function CartItem({ item }) {
+interface CartItemProps {
+  item: CartItemType;
+}
+
+function CartItem({ item }: CartItemProps) {
   const { updateQuantity } = useCart();
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
@@ -49,14 +53,22 @@ export default function CartModal() {
     maximumFractionDigits: 0,
   }).format(totalPrice);
 
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    closeCart();
+  };
+
+  const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
+
   return (
     <div
       className="fixed inset-0 bg-black bg-opacity-25 background-blur-sm z-40"
-      onClick={closeCart}
+      onClick={handleBackdropClick}
     >
       <div
         className="max-w-[377px] w-full bg-white rounded-lg p-8 absolute top-28 right-8 sm:right-10 lg:right-40 z-50"
-        onClick={(e) => e.stopPropagation()} // Prevents closing when clicking inside
+        onClick={handleModalClick}
       >
         {/* Header */}
         <div className="flex justify-between items-center mb-8">

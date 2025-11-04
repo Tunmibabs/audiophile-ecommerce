@@ -1,6 +1,20 @@
 import React from 'react';
 
-export default function ProductInfo({ product }) {
+interface BoxItem {
+  quantity: number;
+  item: string;
+}
+
+interface Product {
+  features: string;
+  inTheBox: BoxItem[]; 
+}
+
+interface ProductInfoProps {
+  product: Product;
+}
+
+export default function ProductInfo({ product }: ProductInfoProps) {
   const { features, inTheBox } = product;
 
   return (

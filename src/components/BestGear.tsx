@@ -11,7 +11,6 @@ export default function BestGear() {
                       gap-12 md:gap-16 lg:gap-32"
       >
         <div className="flex-1 rounded-lg overflow-hidden">
-          
           <picture>
             <source media="(min-width: 769px)" srcSet={ManPortrait} />
             <source media="(min-width: 376px)" srcSet={ManLandscape} />

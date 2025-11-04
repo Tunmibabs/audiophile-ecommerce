@@ -4,7 +4,7 @@ import Speakers from "../assets/speakers.svg";
 import Earphones from "../assets/earphones.svg";
 import Headphones from "../assets/headphones.svg";
 
-function ArrowIcon() {
+function ArrowIcon(): React.ReactElement {
   return (
     <svg
       width="8"
@@ -23,7 +23,13 @@ function ArrowIcon() {
   );
 }
 
-const categories = [
+interface Category {
+  name: string;
+  href: string;
+  imgSrc: string;
+}
+
+const categories: Category[] = [
   {
     name: "Headphones",
     href: "/headphones",
@@ -62,7 +68,7 @@ export default function CategoryLinks() {
                 {category.name}
               </h6>
 
-              <Button variant="link">
+              <Button as="link" to={category.href} variant="link">
                 Shop <ArrowIcon />
               </Button>
             </div>

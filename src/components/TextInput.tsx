@@ -1,6 +1,22 @@
 import React from 'react';
 
-export default function TextInput({ label, placeholder, name, value, onChange, error }) {
+interface TextInputProps {
+  label: string;
+  placeholder: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; 
+  error?: string;
+}
+
+export default function TextInput({ 
+  label, 
+  placeholder, 
+  name, 
+  value, 
+  onChange, 
+  error 
+}: TextInputProps) {
   return (
     <div className="flex flex-col">
       <div className="flex justify-between items-center mb-2">

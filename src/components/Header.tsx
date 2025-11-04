@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
-function HamburgerIcon() {
+function HamburgerIcon(): React.ReactElement {
   return (
     <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg">
       <g fill="currentColor" fillRule="evenodd">
@@ -12,7 +12,7 @@ function HamburgerIcon() {
   );
 }
 
-function CartIcon() {
+function CartIcon(): React.ReactElement {
   return (
     <svg width="23.33" height="20" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -26,8 +26,13 @@ function CartIcon() {
   );
 }
 
+interface NavLink {
+  name: string;
+  href: string;
+}
+
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { toggleCart, cartCount } = useCart();
 
   useEffect(() => {
@@ -44,7 +49,7 @@ export default function Header() {
     };
   }, []);
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: "Home", href: "/" },
     { name: "Headphones", href: "/headphones" },
     { name: "Speakers", href: "/speakers" },

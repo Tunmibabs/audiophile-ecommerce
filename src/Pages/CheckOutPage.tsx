@@ -1,13 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
-import TextInput from "../components/TextInput";
-import RadioInput from "../components/RadioInput";
-import Summary from "../components/Summary";
-import ThankYouModal from '../components/ThankYouModal';
+import { useCart } from "../context/CartContext.tsx";
+import TextInput from "../components/TextInput.tsx";
+import RadioInput from "../components/RadioInput.tsx";
+import Summary from "../components/Summary.tsx";
+import ThankYouModal from "../components/ThankYouModal.tsx";
 
 import { useMutation } from "convex/react";
-import {api} from "../../convex/_generated/api"
+import { api } from "../../convex/_generated/api";
+import { OrderData } from "../../convex/order";
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  zip: string;
+  city: string;
+  country: string;
+  paymentMethod: "eMoney" | "cash";
+  eMoneyNumber: string;
+  eMoneyPIN: string;
+}
+type FormErrors = Partial<Record<keyof FormData, string>>;
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
@@ -17,7 +32,7 @@ export default function CheckoutPage() {
   const placeOrder = useMutation(api.orders.placeOrder);
 
   // --- Form State ---
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
@@ -25,25 +40,28 @@ export default function CheckoutPage() {
     zip: "",
     city: "",
     country: "",
-    paymentMethod: "eMoney", // 'eMoney' or 'cash'
+    paymentMethod: "eMoney",
     eMoneyNumber: "",
     eMoneyPIN: "",
   });
 
   // --- Form Errors State ---
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<FormErrors>({});
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name as keyof FormData]: value,
+    }));
   };
 
   const handleGoBack = () => {
     navigate(-1);
   };
 
-  const validateForm = () => {
-    const newErrors = {};
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
     if (!formData.name) newErrors.name = "Can't be empty";
     if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = "Invalid email";
@@ -59,13 +77,12 @@ export default function CheckoutPage() {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Returns true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      
       const shipping = 50;
       const grandTotal = totalPrice + shipping;
 
@@ -101,19 +118,16 @@ export default function CheckoutPage() {
       };
 
       try {
-        // Call the Convex mutation
         console.log("Submitting order to Convex...");
         const orderId = await placeOrder(orderData);
         console.log("Order placed successfully, ID:", orderId);
-        
-        setShowThankYou(true);
 
+        setShowThankYou(true);
       } catch (error) {
         console.error("Failed to place order:", error);
       }
-
     } else {
-      console.log('Form validation failed', errors);
+      console.log("Form validation failed", errors);
     }
   };
 
@@ -286,7 +300,7 @@ export default function CheckoutPage() {
           </div>
         </form>
 
-        {showThankYou && <ThankYouModal onClose={closeThankYouModal}/>}
+        {showThankYou && <ThankYouModal onClose={closeThankYouModal} />}
       </div>
     </div>
   );

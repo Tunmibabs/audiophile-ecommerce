@@ -1,8 +1,12 @@
 import React from 'react';
-import { useCart } from '../context/CartContext';
+import { useCart, CartItem as CartItemType } from '../context/CartContext';
 import Button from './Button';
 
-function SummaryItem({ item }) {
+interface SummaryItemProps {
+  item: CartItemType;
+}
+
+function SummaryItem({ item }: SummaryItemProps) {
   const formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -22,14 +26,17 @@ function SummaryItem({ item }) {
   );
 }
 
-export default function Summary({ onContinue }) {
+interface SummaryProps {
+  onContinue: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+export default function Summary({ onContinue }: SummaryProps) {
   const { cartItems, totalPrice } = useCart();
 
-  // Shipping and Grand Total
   const shipping = 50;
   const grandTotal = totalPrice + shipping;
 
-  const format = (num) => new Intl.NumberFormat('en-US', {
+  const format = (num: number) => new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 0,

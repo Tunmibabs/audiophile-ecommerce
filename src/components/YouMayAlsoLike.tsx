@@ -1,9 +1,27 @@
-// File: src/components/YouMayAlsoLike.jsx
-
 import React from 'react';
 import Button from './Button';
 
-export default function YouMayAlsoLike({ product }) {
+interface ProductImages {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
+interface OtherProduct {
+  slug: string;
+  name: string;
+  images: ProductImages;
+}
+
+interface Product {
+  others: OtherProduct[];
+}
+
+interface YouMayAlsoLikeProps {
+  product: Product;
+}
+
+export default function YouMayAlsoLike({ product }: YouMayAlsoLikeProps) {
   const { others } = product; 
 
   return (

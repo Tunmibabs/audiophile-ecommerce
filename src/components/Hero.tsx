@@ -2,11 +2,11 @@ import React from "react";
 import HeadPhones from "../assets/hero-headphones.png";
 import Button from "./Button";
 
-export default function Hero() {
+export default function Hero(): React.ReactElement {
   return (
     <section
       className="bg-black text-white relative overflow-hidden
-                 min-h-[600px] md:min-h-[729px]" 
+                 min-h-[600px] md:min-h-[729px]"
     >
       <div
         className="absolute inset-0 bg-no-repeat 
@@ -34,7 +34,7 @@ export default function Hero() {
                    min-h-[600px] md:min-h-[729px]"
       >
         {/* Text Column */}
-        <div className="md:w-1/2 text-center md:text-left py-2 md:py-10"> 
+        <div className="md:w-1/2 text-center md:text-left py-2 md:py-10">
           <span className="text-overline tracking-overline text-white opacity-50 block mb-6">
             NEW PRODUCT
           </span>
@@ -47,7 +47,10 @@ export default function Hero() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music lover.
           </p>
-          <Button variant="primary">See Product</Button>
+          {/* Updated to be a link, assuming Button.tsx is typed for this */}
+          <Button as="link" to="/product/xx99-mark-ii-headphones" variant="primary">
+            See Product
+          </Button>
         </div>
 
         {/* This empty div just ensures the flex layout works on desktop */}

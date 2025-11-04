@@ -1,19 +1,44 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import QuantitySelector from "./QuantitySelector";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/CartContext"; // Assumes CartContext.tsx
 
-export default function ProductDetailCard({ product }) {
+interface Product {
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  isNew: boolean;
+  images: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
+  price: number;
+  features?: string;
+  inTheBox?: { quantity: number; item: string }[];
+  gallery?: any;
+  others?: any[];
+}
+
+interface ProductDetailCardProps {
+  product: Product;
+}
+
+export default function ProductDetailCard({ product }: ProductDetailCardProps) {
   const { name, description, isNew, images, price } = product;
-  const [quantity, setQuantity] = useState(1);
-  const { addToCart } = useCart();
+  
+  const [quantity, setQuantity] = useState<number>(1);
+    const { addToCart } = useCart();
 
   const handleDecrement = () => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   };
+  
   const handleIncrement = () => {
     setQuantity((prev) => prev + 1);
   };
+
   const handleAddToCart = () => {
     addToCart(product, quantity);
   };
@@ -74,6 +99,7 @@ export default function ProductDetailCard({ product }) {
             onDecrement={handleDecrement}
             onIncrement={handleIncrement}
           />
+          {/* This assumes Button.tsx is typed for an onClick prop */}
           <Button variant="primary" onClick={handleAddToCart}>
             Add to Cart
           </Button>

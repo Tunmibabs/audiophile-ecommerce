@@ -1,47 +1,92 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import CategoryHeader from "../components/CategoryHeader";
-import ProductCard from "../components/ProductCard";
-import CategoryLinks from "../components/CategoryLinks";
-import BestGear from "../components/BestGear";
+import CategoryHeader from "../components/CategoryHeader.tsx";
+import ProductCard from "../components/ProductCard.tsx";
+import CategoryLinks from "../components/CategoryLinks.tsx";
+import BestGear from "../components/BestGear.tsx";
 
 import XX99Headphones from "../assets/xx99-desktop.svg";
 import XX99HeadphonesM from "../assets/xx99-tablet.svg";
 import XX99MarkI from "../assets/xx99-mark1-desktop.svg";
 import XX99MarkIm from "../assets/xx99-mark1-tablet.svg";
-
 import XX59 from "../assets/xx59-desktop.svg";
 import XX59m from "../assets/xx59-tablet.svg";
-
 import ZX9Speaker from "../assets/zx9-speaker.svg";
 import ZX7Speaker from "../assets/zx7-speakers.svg";
 import YX1Earphones from "../assets/yx1-wireless.svg";
-// GALLERY IMPORTS
+// ... (all other gallery imports)
 import xx991 from "../assets/man-d-products.svg";
 import xx992 from "../assets/phone-d-products.svg";
 import xx993 from "../assets/headphones-d-products.svg";
-
 import mark11 from "../assets/mark1-first.svg";
 import mark12 from "../assets/mark1-second.svg";
 import mark13 from "../assets/mark1-third.svg";
-
 import xx591 from "../assets/xx59-1.svg";
 import xx592 from "../assets/xx59-2.svg";
 import xx593 from "../assets/xx59-3.svg";
-
 import zx91 from "../assets/zx9-1.svg";
 import zx92 from "../assets/zx9-2.svg";
 import zx93 from "../assets/zx9-3.svg";
-
 import ZX71 from "../assets/zx7-1.svg";
 import ZX72 from "../assets/zx7-2.svg";
 import ZX73 from "../assets/zx7-3.svg";
-
 import E1 from "../assets/earphones1.svg";
 import E2 from "../assets/earphones2.svg";
 import E3 from "../assets/earphones3.svg";
 
-const categoryData = {
+interface ProductImages {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
+interface GalleryImage {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
+interface BoxItem {
+  quantity: number;
+  item: string;
+}
+
+interface OtherProduct {
+  slug: string;
+  name: string;
+  images: ProductImages;
+}
+
+export interface Product {
+  id: number;
+  name: string;
+  description: string;
+  isNew: boolean;
+  slug: string;
+  images: ProductImages;
+  price: number;
+  features: string;
+  inTheBox: BoxItem[];
+  gallery: {
+    first: GalleryImage;
+    second: GalleryImage;
+    third: GalleryImage;
+  };
+  others: OtherProduct[];
+}
+
+interface Category {
+  title: string;
+  products: Product[];
+}
+
+interface CategoryData {
+  headphones: Category;
+  speakers: Category;
+  earphones: Category;
+}
+
+const categoryData: CategoryData = {
   headphones: {
     title: "Headphones",
     products: [
@@ -69,21 +114,9 @@ const categoryData = {
           { quantity: 1, item: "Travel Bag" },
         ],
         gallery: {
-          first: {
-            desktop: xx991,
-            mobile: xx991,
-            tablet: xx991,
-          },
-          second: {
-            desktop: xx992,
-            mobile: xx992,
-            tablet: xx992,
-          },
-          third: {
-            desktop: xx993,
-            mobile: xx993,
-            tablet: xx993,
-          },
+          first: { desktop: xx991, mobile: xx991, tablet: xx991 },
+          second: { desktop: xx992, mobile: xx992, tablet: xx992 },
+          third: { desktop: xx993, mobile: xx993, tablet: xx993 },
         },
         others: [
           {
@@ -98,11 +131,7 @@ const categoryData = {
           {
             slug: "xx59-headphones",
             name: "XX59",
-            images: {
-              mobile: XX59m,
-              tablet: XX59m,
-              desktop: XX59,
-            },
+            images: { mobile: XX59m, tablet: XX59m, desktop: XX59 },
           },
           {
             slug: "zx9-speaker",
@@ -115,6 +144,7 @@ const categoryData = {
           },
         ],
       },
+      // ... (other headphone products)
       {
         id: 2,
         name: "XX99 Mark I Headphones",
@@ -258,6 +288,7 @@ More than a simple pair of headphones, this headset features a pair of built-in 
   speakers: {
     title: "Speakers",
     products: [
+      // ... (speaker products)
       {
         id: 1,
         name: "ZX9 SPEAKER",
@@ -428,38 +459,26 @@ The YX1 Wireless Earphones features customizable controls for volume, music, cal
           { quantity: 1, item: "Travel Pouch" },
         ],
         gallery: {
-          first: {
-            desktop: E1,
-            mobile: E1,
-            tablet: E1,
-          },
-          second: {
-            desktop: E2,
-            mobile: E2,
-            tablet: E2,
-          },
-          third: {
-            desktop: E3,
-            mobile: E3,
-            tablet: E3,
-          },
+          first: { desktop: E1, mobile: E1, tablet: E1 },
+          second: { desktop: E2, mobile: E2, tablet: E2 },
+          third: { desktop: E3, mobile: E3, tablet: E3 },
         },
         others: [
-          { slug: "xx99-mark-i-headphones", name: "XX99 Mark I", images: {
-              mobile: XX59m,
-              tablet: XX59m,
-              desktop: XX59,
-            } },
-          { slug: "xx59-headphones", name: "XX59", images: {
-              mobile: XX59m,
-              tablet: XX59m,
-              desktop: XX59,
-            }},
-          { slug: "zx9-speaker", name: "ZX9 Speaker", images: {
-              mobile: XX59m,
-              tablet: XX59m,
-              desktop: XX59,
-            } },
+          {
+            slug: "xx99-mark-i-headphones",
+            name: "XX99 Mark I",
+            images: { mobile: XX59m, tablet: XX59m, desktop: XX59 },
+          },
+          {
+            slug: "xx59-headphones",
+            name: "XX59",
+            images: { mobile: XX59m, tablet: XX59m, desktop: XX59 },
+          },
+          {
+            slug: "zx9-speaker",
+            name: "ZX9 Speaker",
+            images: { mobile: XX59m, tablet: XX59m, desktop: XX59 },
+          },
         ],
       },
     ],
@@ -468,8 +487,23 @@ The YX1 Wireless Earphones features customizable controls for volume, music, cal
 
 export const allProductData = categoryData;
 
+// --- 3. Type the React component ---
+
+// Define the shape of the URL parameters
+type CategoryParams = {
+  categoryName: string;
+};
+
+// Define valid category keys
+type CategoryKey = keyof CategoryData;
+
 export default function CategoryPage() {
-  const { categoryName } = useParams();
+  // 4. Apply the type to useParams
+  // We assert that categoryName will always be a valid key
+  const { categoryName } = useParams<CategoryParams>() as {
+    categoryName: CategoryKey;
+  };
+
   const data = categoryData[categoryName];
 
   if (!data) {
@@ -481,6 +515,7 @@ export default function CategoryPage() {
       <CategoryHeader title={data.title} />
 
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 py-16 md:py-32 flex flex-col gap-32">
+        {/* TypeScript knows 'product' is of type 'Product' here */}
         {data.products.map((product, index) => (
           <ProductCard
             key={product.id}

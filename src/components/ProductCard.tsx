@@ -1,7 +1,27 @@
 import React from "react";
 import Button from "./Button";
 
-export default function ProductCard({ product, reverse = false }) {
+interface Product {
+  name: string;
+  description: string;
+  isNew: boolean;
+  slug: string;
+  images: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
+}
+
+interface ProductCardProps {
+  product: Product;
+  reverse?: boolean; 
+}
+
+export default function ProductCard({
+  product,
+  reverse = false,
+}: ProductCardProps) {
   const { name, description, isNew, slug, images } = product;
 
   const nameArray = name.split(" ");
@@ -17,7 +37,11 @@ export default function ProductCard({ product, reverse = false }) {
         <picture>
           <source media="(min-width: 769px)" srcSet={images.desktop} />
           <source media="(min-width: 376px)" srcSet={images.tablet} />
-          <img src={images.mobile} alt={name} className="w-1/2 sm:w-2/3 md:w-3/5 object-contain mx-auto" />
+          <img
+            src={images.mobile}
+            alt={name}
+            className="w-1/2 sm:w-2/3 md:w-3/5 object-contain mx-auto"
+          />
         </picture>
       </div>
 

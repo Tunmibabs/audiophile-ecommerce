@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function FacebookIcon() {
+function FacebookIcon(): React.ReactElement {
   return (
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -13,7 +13,7 @@ function FacebookIcon() {
   );
 }
 
-function TwitterIcon() {
+function TwitterIcon(): React.ReactElement {
   return (
     <svg width="24" height="20" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -25,7 +25,7 @@ function TwitterIcon() {
   );
 }
 
-function InstagramIcon() {
+function InstagramIcon(): React.ReactElement {
   return (
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -37,8 +37,13 @@ function InstagramIcon() {
   );
 }
 
+interface NavLink {
+  name: string;
+  href: string;
+}
+
 export default function Footer() {
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: "Home", href: "/" },
     { name: "Headphones", href: "/headphones" },
     { name: "Speakers", href: "/speakers" },
