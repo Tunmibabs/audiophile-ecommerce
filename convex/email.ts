@@ -34,12 +34,8 @@ export const sendOrderConfirmationEmail = internalAction({
     
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
     if (!RESEND_API_KEY) {
-      console.error("RESEND_API_KEY is not set in environment variables.");
-      return; // Fail gracefully if no key is set
+      return;
     }
-
-    // 1. Build the HTML for the email
-    // This is a simple template. You should make this more robust.
     const itemsHtml = args.items
       .map(
         (item) => `
@@ -81,7 +77,7 @@ export const sendOrderConfirmationEmail = internalAction({
           ${args.shippingDetails.country}
         </p>
 
-        <a href="https://your-website-url.com/confirmation/${args.orderId.toString()}">View Your Order</a>
+        <a href="https://tunmise-audiophile-ecommerce.netlify.app/">View Your Order</a>
         <p>Questions? Contact support@audiophile.com</p>
       </div>
     `;
@@ -95,7 +91,7 @@ export const sendOrderConfirmationEmail = internalAction({
           "Authorization": `Bearer ${RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: "Audiophile <orders@yourdomain.com>", // Must be a verified domain
+          from: "Audiophile <https://tunmise-audiophile-ecommerce.netlify.app/>", // Must be a verified domain
           to: [args.customerEmail],
           subject: `Your Audiophile Order Confirmation (${args.orderId.toString()})`,
           html: htmlTemplate,

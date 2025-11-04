@@ -7,7 +7,7 @@ import Summary from "../components/Summary";
 import ThankYouModal from '../components/ThankYouModal';
 
 import { useMutation } from "convex/react";
-// import {api} from ../../convex/_generated/api
+import {api} from "../../convex/_generated/api"
 
 export default function CheckoutPage() {
   const navigate = useNavigate();

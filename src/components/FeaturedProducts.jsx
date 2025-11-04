@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button"; // Import our reusable button
+import Button from "./Button";
 import PatternCircles from "../assets/pattern-circles.svg";
 import Speakers from "../assets/zx9-speaker.svg";
 import ZX7 from "../assets/zx7.png";
