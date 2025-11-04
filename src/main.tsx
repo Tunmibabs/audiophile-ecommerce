@@ -9,7 +9,7 @@ import ProductDetailPage from "./Pages/ProductDetailPage.tsx";
 import CheckoutPage from "./Pages/CheckOutPage.tsx";
 import { ConvexReactClient } from "convex/react";
 import { ConvexProvider } from "convex/react";
-import { CartProvider } from "./context/CartContext.js";
+import { CartProvider } from "./context/CartContext.tsx";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 

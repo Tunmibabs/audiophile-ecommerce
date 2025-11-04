@@ -1,15 +1,15 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import { allProductData } from "./CategoryPage.js";
+import { allProductData } from "./CategoryPage.tsx";
 
-import CategoryLinks from "../components/CategoryLinks.js";
-import BestGear from "../components/BestGear.js";
+import CategoryLinks from "../components/CategoryLinks.tsx";
+import BestGear from "../components/BestGear.tsx";
 
-import ProductDetailCard from "../components/ProductDetailCard.js";
-import ProductInfo from "../components/ProductsInfo.js";
-import ProductGallery from "../components/ProductGallery.js";
-import YouMayAlsoLike from "../components/YouMayAlsoLike.js";
+import ProductDetailCard from "../components/ProductDetailCard.tsx";
+import ProductInfo from "../components/ProductsInfo.tsx";
+import ProductGallery from "../components/ProductGallery.tsx";
+import YouMayAlsoLike from "../components/YouMayAlsoLike.tsx";
 
 export default function ProductDetailPage() {
   const { productSlug } = useParams();
