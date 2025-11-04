@@ -3,7 +3,7 @@ import Button from "./Button"; // Import our reusable button
 import PatternCircles from "../assets/pattern-circles.svg";
 import Speakers from "../assets/zx9-speaker.svg";
 import ZX7 from "../assets/zx7.png";
-import YX1 from "../assets/yx1.svg";
+import YX1 from "../assets/YX1.svg";
 
 export default function FeaturedProducts() {
   return (
@@ -54,7 +54,7 @@ export default function FeaturedProducts() {
         <div className="relative rounded-lg overflow-hidden h-[320px] md:h-[400px]">
           {/* Background Image */}
           <img
-            src={ZX7} // Make sure this variable is imported correctly
+            src={ZX7} 
             alt="ZX7 Speaker"
             className="w-full h-full object-cover object-bottom-left md:object-center lg:object-right"
           />

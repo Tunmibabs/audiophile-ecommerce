@@ -6,9 +6,15 @@ import RadioInput from "../components/RadioInput";
 import Summary from "../components/Summary";
 import ThankYouModal from '../components/ThankYouModal';
 
+import { useMutation } from "convex/react";
+// import {api} from ../../convex/_generated/api
+
 export default function CheckoutPage() {
   const navigate = useNavigate();
+  const { cartItems, totalPrice, clearCart } = useCart();
   const [showThankYou, setShowThankYou] = useState(false);
+
+  const placeOrder = useMutation(api.orders.placeOrder);
 
   // --- Form State ---
   const [formData, setFormData] = useState({
@@ -56,13 +62,58 @@ export default function CheckoutPage() {
     return Object.keys(newErrors).length === 0; // Returns true if no errors
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form Submitted", formData);
-      setShowThankYou(true); // Show the confirmation modal
+      
+      const shipping = 50;
+      const grandTotal = totalPrice + shipping;
+
+      const orderData = {
+        customerDetails: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+        },
+        shippingDetails: {
+          address: formData.address,
+          zip: formData.zip,
+          city: formData.city,
+          country: formData.country,
+        },
+        items: cartItems.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          images: { 
+            mobile: item.images.mobile,
+            tablet: item.images.tablet,
+            desktop: item.images.desktop,
+          }
+        })),
+        totals: {
+          subtotal: totalPrice,
+          shipping: shipping,
+          grandTotal: grandTotal,
+        },
+        paymentMethod: formData.paymentMethod,
+      };
+
+      try {
+        // Call the Convex mutation
+        console.log("Submitting order to Convex...");
+        const orderId = await placeOrder(orderData);
+        console.log("Order placed successfully, ID:", orderId);
+        
+        setShowThankYou(true);
+
+      } catch (error) {
+        console.error("Failed to place order:", error);
+      }
+
     } else {
-      console.log("Form validation failed", errors);
+      console.log('Form validation failed', errors);
     }
   };
 
@@ -235,7 +286,7 @@ export default function CheckoutPage() {
           </div>
         </form>
 
-        {showThankYou && <ThankYouModal />}
+        {showThankYou && <ThankYouModal onClose={closeThankYouModal}/>}
       </div>
     </div>
   );
